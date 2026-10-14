@@ -1,8 +1,16 @@
-from tools.tavily_tool import tavily_search
-from tools.flight_tool import search_flights
+import sys
+from pathlib import Path
 
-#res = tavily_search("Best Hotels in India")
-#print(res)
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-flight_res = search_flights("Plan a 7 days Japan trip from India")
-print(flight_res)
+from backend import run_travel_agent
+
+user_input = input("Enter travel request: ")
+
+respone = run_travel_agent(
+    user_input=user_input,
+    thread_id="test_user"
+)
+
+print("\n\nFINAL RESPONSE:\n")
+print(respone["answer"])
