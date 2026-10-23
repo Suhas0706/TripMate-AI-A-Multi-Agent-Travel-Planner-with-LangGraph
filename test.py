@@ -1,16 +1,6 @@
-import sys
-from pathlib import Path
+import asyncio
+#from mcp_client_test import tavily_mcp_search
+from mcp_client import get_all_tools
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-from backend import run_travel_agent
-
-user_input = input("Enter travel request: ")
-
-respone = run_travel_agent(
-    user_input=user_input,
-    thread_id="test_user"
-)
-
-print("\n\nFINAL RESPONSE:\n")
-print(respone["answer"])
+if __name__ == "__main__":
+    asyncio.run(get_all_tools())
